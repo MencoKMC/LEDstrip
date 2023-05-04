@@ -5,6 +5,7 @@
 #define LED_BUILTIN 2   // Set the GPIO pin 
  
 // Set credentials.
+
 const char *ssid = "myAP";
 const char *password = "myPW";
  
@@ -13,11 +14,12 @@ WiFiServer server(80);
  
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
- 
+  
   Serial.begin(115200);
   Serial.println();
   Serial.println("Configuring access point...");
  
+  WiFi.mode(WIFI_AP);
   WiFi.softAP(ssid, password);
   IPAddress myIP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
